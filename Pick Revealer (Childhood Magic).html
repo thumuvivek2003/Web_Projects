@@ -287,8 +287,7 @@
             "Genelia D'Souza"
         ]
     }
-
-    picked_names = names["animals"];
+    idxs = []
 
     function makeBody(picked_names) {
         showBody = "";
@@ -297,8 +296,7 @@
             showBody += `<tr><td>${name}</td></tr>`;
         }
         $("#show-body").html(showBody);
-        const idxs = makeRandom([0, 1, 2, 3]);
-        // const idxs = [0, 1, 2, 3];
+        idxs = makeRandom([0, 1, 2, 3]);
         lists = [];
         for (const i of idxs) {
             lists.push(makeRandom(mylist[i]));
@@ -328,6 +326,7 @@
                                 <label></label>
                             </div>
                         </td>`;
+
         }
         listBody += "</tr>";
         $("#list-body").html(listBody);
@@ -336,10 +335,11 @@
 
 
 
+    picked_names = names["animals"];
     idxs = makeBody(picked_names);
     $(document).ready(function(){
         $("#themeSelect").change(function(){
-            picked_names = names[$(this).val()];
+            picked_names = makeRandom(names[$(this).val()]);
             makeBody(picked_names);
         })
     })
@@ -359,6 +359,7 @@
         $("#selected_text").text(picked_names[val]);
     }
 
+    
     $(document).ready(function () {
         $("#selected_btn").click(function () {
             const choose = [];
