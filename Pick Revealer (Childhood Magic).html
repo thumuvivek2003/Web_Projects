@@ -1,5 +1,3 @@
-
-<meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, user-scalable=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7,6 +5,8 @@
     href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Lato:wght@300;400&family=Oswald:wght@300;400;500&family=Playfair+Display&family=Poppins:wght@300;400&display=swap"
     rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=0.68, maximum-scale=1.0, user-scalable=no">
+
 <style>
     #showlist {
         text-align: center;
@@ -327,11 +327,12 @@
         }
         listBody += "</tr>";
         $("#list-body").html(listBody);
+        return idxs
     }
 
 
 
-    makeBody(picked_names);
+    idxs = makeBody(picked_names);
     $(document).ready(function(){
         $("#themeSelect").change(function(){
             picked_names = names[$(this).val()];
@@ -350,7 +351,7 @@
                 val += 2 ** idxs[idx];
             }
         }
-        if (val != 0) { val = val - 1 }
+        if (val != 0) {val = val-1;}
         $("#selected_text").text(picked_names[val]);
     }
 
@@ -362,6 +363,7 @@
                 const isChecked = checkbox.prop('checked');
                 choose.push(isChecked);
             });
+            // alert("Hello");
             getSelected(choose);
         });
     });  
